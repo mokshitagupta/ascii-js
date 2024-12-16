@@ -414,5 +414,17 @@ image.addEventListener("load", (e) => {
   // console.log(buf)
 });
 
+const downloadCanvasAsImage = (canvas, fileName) => {
+  let downloadLink = document.createElement('a');
+  downloadLink.setAttribute('download', `${fileName}.png`);
+  // let canvas = document.getElementById(canvasName);
+  canvas.toBlob(blob => {
+    let url = URL.createObjectURL(blob);
+    downloadLink.setAttribute('href', url);
+    downloadLink.click();
+  });
+}
+
+// downloadCanvasAsImage(tcanvas)
 
 // let sobed =
