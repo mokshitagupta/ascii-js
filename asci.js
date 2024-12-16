@@ -283,7 +283,7 @@ image.addEventListener("load", (e) => {
     gs.push(green)
     bs.push(blue)
     // console.log(red, green, blue, alpha)
-    let gamma = 1.0699
+    let gamma = 1.01004
     // let gamma = 1.069
     let lum = (0.2126 * Math.pow(red, gamma)) + (0.7152 * Math.pow(green, gamma)) + (0.0722 * Math.pow(blue, gamma))
     // let lum = (red + blue + green) / 3
@@ -326,7 +326,7 @@ image.addEventListener("load", (e) => {
 
   console.log(diffs.length, rs.length)
   let diffedLums = diffs[0].map((x, i) => {
-    let v = lumFn(diffs[0][i], diffs[1][i], diffs[2][i], 1.1)
+    let v = lumFn(diffs[0][i], diffs[1][i], diffs[2][i], 1)
     v = isNaN(v) ? 0 : v
     console.log(v, diffs[0][i], diffs[1][i], diffs[2][i])
     return v
@@ -366,7 +366,7 @@ image.addEventListener("load", (e) => {
 
     // "_ / | \"
     // 120
-    if (sobeled[i] > 110) {
+    if (sobeled[i] > 130) {
       sctx.fillText(conTexture[ind], ini1++ * 8, inj1 * 8);
       buf[inj1][ini1] = conTexture[ind]
     } else {
@@ -378,7 +378,7 @@ image.addEventListener("load", (e) => {
 
   // sctx.putImageData(sobImg, 0, 0)
 
-  ctx2.fillStyle = "#021d33";
+  ctx2.fillStyle = "#35213e";
   ctx2.fillRect(0, 0, tcanvas.width, tcanvas.height);
   for (let row = 0; row < w; row++) {
     for (let col = 0; col < w; col++) {
@@ -390,11 +390,41 @@ image.addEventListener("load", (e) => {
 
       ctx2.font = "8px Monospace";
       // 036fba
-      ctx2.fillStyle = "#2d9cf7";
+      ctx2.fillStyle = "#c30550";
 
       if (buf[row][col].toString() == texture2[texture2.length - 1]) {
+        ctx2.fillStyle = "#fec6dc";
+      }
+      else if (buf[row][col].toString() == texture2[texture2.length - 2]) {
+        ctx2.fillStyle = "#fdbdd7";
+      }
+      else if (buf[row][col].toString() == texture2[texture2.length - 3]) {
+        ctx2.fillStyle = "#fd9fc4";
+      }
+      else if (buf[row][col].toString() == texture2[texture2.length - 4]) {
+        ctx2.fillStyle = "#fc81b2";
+      }
+      else if (buf[row][col].toString() == texture2[texture2.length - 5]) {
+        ctx2.fillStyle = "#fb68a2";
+      }
+      else if (buf[row][col].toString() == texture2[texture2.length - 6]) {
+        ctx2.fillStyle = "#fa478e";
+      }
 
-        ctx2.fillStyle = "#F4C96A";
+      else if (buf[row][col].toString() == texture2[texture2.length - 7]) {
+        ctx2.fillStyle = "#fa2b7c";
+      }
+
+      else if (buf[row][col].toString() == texture2[texture2.length - 8]) {
+        ctx2.fillStyle = "#f9126d";
+      }
+
+      else if (buf[row][col].toString() == texture2[texture2.length - 9]) {
+        ctx2.fillStyle = "#e0065c";
+      }
+
+      else if (conTexture.includes(buf[row][col].toString())) {
+        ctx2.fillStyle = "#936a8d";
       }
       // console.log(buf, ctx2)
       ctx2.fillText(buf[row][col].toString(), x - 1, y - 2);
