@@ -283,7 +283,7 @@ image.addEventListener("load", (e) => {
     gs.push(green)
     bs.push(blue)
     // console.log(red, green, blue, alpha)
-    let gamma = 1.01004
+    let gamma = 1.3
     // let gamma = 1.069
     let lum = (0.2126 * Math.pow(red, gamma)) + (0.7152 * Math.pow(green, gamma)) + (0.0722 * Math.pow(blue, gamma))
     // let lum = (red + blue + green) / 3
@@ -320,7 +320,7 @@ image.addEventListener("load", (e) => {
 
   console.log("sobeling87")
 
-  let diffs = putdiffOfGaussians(2, 1, rs, gs, bs, data)
+  let diffs = putdiffOfGaussians(1, 2, rs, gs, bs, data)
   console.log(diffs)
   const lumFn = (red, green, blue, gamma) => (0.2126 * Math.pow(red, gamma)) + (0.7152 * Math.pow(green, gamma)) + (0.0722 * Math.pow(blue, gamma))
 
@@ -335,7 +335,7 @@ image.addEventListener("load", (e) => {
   console.log(diffedLums)
 
 
-  let sobel = applyOp(diffedLums)
+  let sobel = applyOp(lums)
   let sobeled = sobel[0]
   let w = Math.floor(Math.sqrt(data.length / 4))
   let sobImg = ctx.createImageData(w - 2, w - 2)
@@ -352,7 +352,7 @@ image.addEventListener("load", (e) => {
       str.push(curr)
     }
     sctx.font = "8px Monospace";
-    sctx.fillStyle = `white`;
+    sctx.fillStyle = `#f6ff00`;
     // console.log(ini1, inj1)
     // console.log(conTexture[Math.min(3, Math.max(0, Math.floor(sobel[1][i] * 4)))], Math.floor(sobel[1][i] * 4), sobel[1][i], i)
     //
@@ -366,7 +366,7 @@ image.addEventListener("load", (e) => {
 
     // "_ / | \"
     // 120
-    if (sobeled[i] > 130) {
+    if (sobeled[i] > 90) {
       sctx.fillText(conTexture[ind], ini1++ * 8, inj1 * 8);
       buf[inj1][ini1] = conTexture[ind]
     } else {

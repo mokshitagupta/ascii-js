@@ -5,3 +5,4 @@ An implementation of [Acerola's ASCII shader](https://youtu.be/gg40RWiaHRY?si=dt
 ![yell](./renders/yell.png)
 ![pulp](./renders/pulpmul.png)
 ![anime](./renders/anime.png)
+![pika](./renders/pika.png)
