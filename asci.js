@@ -255,7 +255,7 @@ image.addEventListener("load", (e) => {
   // ctx2.fillText("Hello World",10,80);
   // console.log(data)
 
-  ctx2.fillStyle = "black";
+  ctx2.fillStyle = "#036fba";
   ctx2.fillRect(0, 0, tcanvas.width, tcanvas.height);
   sctx.fillStyle = "black";
   sctx.fillRect(0, 0, scanvas.width, scanvas.height);
@@ -283,8 +283,8 @@ image.addEventListener("load", (e) => {
     gs.push(green)
     bs.push(blue)
     // console.log(red, green, blue, alpha)
-    // let gamma = 1.0009
-    let gamma = 1.047992
+    let gamma = 1.0619
+    // let gamma = 1.069
     let lum = (0.2126 * Math.pow(red, gamma)) + (0.7152 * Math.pow(green, gamma)) + (0.0722 * Math.pow(blue, gamma))
     // let lum = (red + blue + green) / 3
     // data[i] = data[i + 1] = data[i + 2] = lum
@@ -366,7 +366,7 @@ image.addEventListener("load", (e) => {
 
     // "_ / | \"
     // 120
-    if (sobeled[i] > 130) {
+    if (sobeled[i] > 150) {
       sctx.fillText(conTexture[ind], ini1++ * 8, inj1 * 8);
       buf[inj1][ini1] = conTexture[ind]
     } else {
@@ -378,6 +378,8 @@ image.addEventListener("load", (e) => {
 
   // sctx.putImageData(sobImg, 0, 0)
 
+  ctx2.fillStyle = "#021d33";
+  ctx2.fillRect(0, 0, tcanvas.width, tcanvas.height);
   for (let row = 0; row < w; row++) {
     for (let col = 0; col < w; col++) {
       // Calculate cell position
@@ -385,8 +387,15 @@ image.addEventListener("load", (e) => {
       const y = row * 8;
 
       // Draw the array value
+
       ctx2.font = "8px Monospace";
-      ctx2.fillStyle = "#987bc1";
+      // 036fba
+      ctx2.fillStyle = "#2d9cf7";
+
+      if (buf[row][col].toString() == texture2[texture2.length - 1]) {
+
+        ctx2.fillStyle = "#F4C96A";
+      }
       // console.log(buf, ctx2)
       ctx2.fillText(buf[row][col].toString(), x - 1, y - 2);
     }
