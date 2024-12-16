@@ -283,7 +283,7 @@ image.addEventListener("load", (e) => {
     gs.push(green)
     bs.push(blue)
     // console.log(red, green, blue, alpha)
-    let gamma = 1.0619
+    let gamma = 1.0699
     // let gamma = 1.069
     let lum = (0.2126 * Math.pow(red, gamma)) + (0.7152 * Math.pow(green, gamma)) + (0.0722 * Math.pow(blue, gamma))
     // let lum = (red + blue + green) / 3
@@ -366,7 +366,7 @@ image.addEventListener("load", (e) => {
 
     // "_ / | \"
     // 120
-    if (sobeled[i] > 150) {
+    if (sobeled[i] > 110) {
       sctx.fillText(conTexture[ind], ini1++ * 8, inj1 * 8);
       buf[inj1][ini1] = conTexture[ind]
     } else {
